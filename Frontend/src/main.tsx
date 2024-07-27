@@ -9,19 +9,23 @@ import {
 
 import { UserLogin } from './User/Views/UserLogin.tsx'
 import { UserRegister } from './User/Views/UserRegister.tsx';
+import { ErrorPage } from './Components/ErrorPage.tsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/login",
     element: <UserLogin />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/register",
     element: <UserRegister />,
+    errorElement: <ErrorPage />,
   }
 ]);
 

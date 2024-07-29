@@ -1,6 +1,6 @@
 import { useRouteError, isRouteErrorResponse } from "react-router-dom";
 
-export function ErrorPage() {
+export default function ErrorPage() {
     const error = useRouteError() as Error;
 
     if (!isRouteErrorResponse(error)) {
@@ -8,7 +8,7 @@ export function ErrorPage() {
     }
 
     return (
-        <div id="error-page">
+        <div className="text-center" id="error-page">
             <h1>Oops!</h1>
             <p>Sorry, an unexpected error has occurred.</p>
             <p>

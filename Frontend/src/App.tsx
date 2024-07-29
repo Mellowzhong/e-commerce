@@ -1,15 +1,7 @@
-import { Home } from "./Components/Home"
-import { NavBar } from "./Components/NavBar"
+import Home from "./Components/Home"
 
-
-function App() {
-
-  return (
-    <>
-      <NavBar></NavBar>
-      <Home></Home>
-    </>
-  )
+export default function App() {
+    return (
+        < Home />
+    )
 }
-
-export default App

@@ -1,30 +1,45 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
 import './index.css'
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-
-import { UserLogin } from './User/Views/UserLogin.tsx'
-import { UserRegister } from './User/Views/UserRegister.tsx';
-import { ErrorPage } from './Components/ErrorPage.tsx';
+import NavBar from './Components/NavBar.tsx';
+import ErrorPage from './Components/ErrorPage.tsx';
+import UserLogin from './User/Views/UserLogin.tsx'
+import UserRegister from './User/Views/UserRegister.tsx';
+import App from './App.tsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <>
+        <NavBar />
+        <App />
+      </>
+    ),
     errorElement: <ErrorPage />,
   },
   {
     path: "/login",
-    element: <UserLogin />,
+    element: (
+      <>
+        <NavBar />
+        <UserLogin />
+      </>
+    ),
     errorElement: <ErrorPage />,
   },
   {
     path: "/register",
-    element: <UserRegister />,
+    element: (
+      <>
+        <NavBar />
+        <UserRegister />
+      </>
+    ),
     errorElement: <ErrorPage />,
   }
 ]);

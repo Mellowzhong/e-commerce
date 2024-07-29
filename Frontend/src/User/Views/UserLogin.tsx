@@ -1,8 +1,10 @@
-export function UserLogin() {
+import { Link } from "react-router-dom"
+
+export default function UserLogin() {
     return (
-        <div className="text-center">
+        <div className="grid text-center justify-center">
             <h1 className="my-4">User login</h1>
-            <form className="grid justify-center" action="submit">
+            <form className="grid justify-center border-2 p-2 rounded-md" action="submit">
                 <label htmlFor="email">
                     Email
                     <input className="border-2 rounded-md block text-center" type="text" name="email" id="email" placeholder="ignacio.lara.v@usach.cl" />
@@ -15,6 +17,11 @@ export function UserLogin() {
                     Login
                 </button>
             </form>
+            <Link to="/register">
+                <button className="border-2 rounded-md block mt-4 w-full">
+                    Register
+                </button>
+            </Link>
         </div>
     )
 }

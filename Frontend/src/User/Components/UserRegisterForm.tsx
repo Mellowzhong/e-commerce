@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { postUser } from "../Services/UserServices";
+import { useNavigate } from "react-router-dom";
 
 export default function UserRegisterForm() {
     const [username, setUsername] = useState<string>("");
@@ -8,6 +9,8 @@ export default function UserRegisterForm() {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [secondPassword, setSecondPassword] = useState<string>("");
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -20,6 +23,7 @@ export default function UserRegisterForm() {
                 email: email,
                 password: password
             });
+            navigate("/login");
         } else {
             console.log("Passwords don't match");
         }

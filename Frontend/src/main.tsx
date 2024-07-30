@@ -6,10 +6,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import ComponentsWithNavBar from './Components/ComponentsWithNavBar.tsx';
-// import ErrorPage from './Components/ErrorPage.tsx';
+import ErrorPage from './Components/ErrorPage.tsx';
 import UserLogin from './User/Views/UserLogin.tsx'
 import UserRegister from './User/Views/UserRegister.tsx';
 import Home from './Components/Home.tsx';
+import Testing from './Components/Testing.tsx';
+import ProtectedRoute from './Components/ProtectedRoute.tsx';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +21,7 @@ const router = createBrowserRouter([
         <Home />
       </ComponentsWithNavBar>
     ),
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/login",
@@ -28,7 +30,7 @@ const router = createBrowserRouter([
         <UserLogin />
       </ComponentsWithNavBar>
     ),
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/register",
@@ -37,7 +39,17 @@ const router = createBrowserRouter([
         <UserRegister />
       </ComponentsWithNavBar>
     ),
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/testing",
+    element: (
+      <ComponentsWithNavBar>
+        <ProtectedRoute>
+          <Testing />
+        </ProtectedRoute>
+      </ComponentsWithNavBar>
+    ),
   }
 ]);
 

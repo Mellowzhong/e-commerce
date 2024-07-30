@@ -5,42 +5,39 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import NavBar from './Components/NavBar.tsx';
-import ErrorPage from './Components/ErrorPage.tsx';
+import ComponentsWithNavBar from './Components/ComponentsWithNavBar.tsx';
+// import ErrorPage from './Components/ErrorPage.tsx';
 import UserLogin from './User/Views/UserLogin.tsx'
 import UserRegister from './User/Views/UserRegister.tsx';
-import App from './App.tsx';
+import Home from './Components/Home.tsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <>
-        <NavBar />
-        <App />
-      </>
+      <ComponentsWithNavBar>
+        <Home />
+      </ComponentsWithNavBar>
     ),
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
   },
   {
     path: "/login",
     element: (
-      <>
-        <NavBar />
+      <ComponentsWithNavBar>
         <UserLogin />
-      </>
+      </ComponentsWithNavBar>
     ),
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
   },
   {
     path: "/register",
     element: (
-      <>
-        <NavBar />
+      <ComponentsWithNavBar>
         <UserRegister />
-      </>
+      </ComponentsWithNavBar>
     ),
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
   }
 ]);
 

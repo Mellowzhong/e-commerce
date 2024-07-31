@@ -6,6 +6,11 @@ export interface PostUser{
   password: string;
 }
 
+export interface UserResponse{
+  status: number;
+  data: User;
+}
+
 export interface User{
   id: BigInteger;
   username: string;

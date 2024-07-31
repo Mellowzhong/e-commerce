@@ -1,6 +1,6 @@
+import api from "../../Api";
 import { BASE_URL } from "../../Utilities/Constants";
 import { PostUser } from "../../Utilities/Types/types";
-import api from "../../Api";
 
 export const postUser = async (user:PostUser) => {
   try {
@@ -13,9 +13,9 @@ export const postUser = async (user:PostUser) => {
 
 export const getUserById = async (id: BigInteger) => { 
   try {
-  const response = await api.get(`${BASE_URL}/user/${id}`);
+    const response = await api.get(`${BASE_URL}/user/${id}`);
     console.log("getUserById", response.data);
-    return response.data;
+    return {status: 200, data: response.data };
   } catch(error) {
     console.log(error);
     return error;

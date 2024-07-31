@@ -1,15 +1,23 @@
 import { BASE_URL } from "../../Utilities/Constants";
-import { User } from "../../Utilities/Types/types";
-import axios from "axios";
+import { PostUser } from "../../Utilities/Types/types";
+import api from "../../Api";
 
-export const postUser = async (user:User) => {
+export const postUser = async (user:PostUser) => {
   try {
-    console.log("user:", user);
-    console.log("BASE_URL:", BASE_URL);
-    const response = await axios.post(`${BASE_URL}/user/register/`, user);
-    console.log("user:",response.data);
+    const response = await api.post(`${BASE_URL}/user/register/`, user);
     return response.data;
   } catch (error) {
     console.error(error);
+  }
+};
+
+export const getUserById = async (id: BigInteger) => { 
+  try {
+  const response = await api.get(`${BASE_URL}/user/${id}`);
+    console.log("getUserById", response.data);
+    return response.data;
+  } catch(error) {
+    console.log(error);
+    return error;
   }
 };

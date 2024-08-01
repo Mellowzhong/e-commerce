@@ -1,16 +1,19 @@
-import React from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../../Utilities/Constants'
 import { useCookies } from 'react-cookie';
+import { getUserFromCookies } from "../../Utilities/Decoding/Decoding";
+import { UserResponse } from "../..//Utilities/Types/types"
+import { createUser } from "../..//Redux/States/User"
+import { useAppDispatch } from "../..//Utilities/Hooks/Hooks"
 import api from '../../Api';
 
 export default function UserLogin() {
-
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [, setCookie] = useCookies([ACCESS_TOKEN, REFRESH_TOKEN]);
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -21,7 +24,17 @@ export default function UserLogin() {
                 setCookie(ACCESS_TOKEN, response.data.access, { path: '/' });
                 setCookie(REFRESH_TOKEN, response.data.refresh, { path: '/' });
 
-                navigate("/testing");
+                const userResponse = await getUserFromCookies(response.data.access) as UserResponse;
+
+                const { status, data } = userResponse;
+
+                if (status === 200) {
+                    dispatch(createUser(data));
+                } else {
+                    console.log(`Error: ${status}`);
+                }
+
+                navigate("/");
             } else {
                 navigate("/login");
             }
